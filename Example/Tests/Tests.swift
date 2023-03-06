@@ -1,5 +1,4 @@
 import XCTest
-import degpeg-video-call-ios-sdk
 
 class Tests: XCTestCase {
     

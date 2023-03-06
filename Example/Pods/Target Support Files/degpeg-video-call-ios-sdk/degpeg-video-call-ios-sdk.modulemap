@@ -1,0 +1,6 @@
+framework module degpeg_video_call_ios_sdk {
+  umbrella header "degpeg-video-call-ios-sdk-umbrella.h"
+
+  export *
+  module * { export * }
+}

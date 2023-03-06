@@ -1,0 +1,23 @@
+PODS:
+  - degpeg-video-call-ios-sdk (1.0):
+    - MBProgressHUD (~> 1.2)
+  - MBProgressHUD (1.2.0)
+
+DEPENDENCIES:
+  - degpeg-video-call-ios-sdk (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - MBProgressHUD
+
+EXTERNAL SOURCES:
+  degpeg-video-call-ios-sdk:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  degpeg-video-call-ios-sdk: 068ce77c872befcce6ad907aa7d9ec7e06d730b5
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+
+PODFILE CHECKSUM: 88803f8beb688ce34d59400b13be409305cf7ac9
+
+COCOAPODS: 1.12.0
