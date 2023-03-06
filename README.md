@@ -31,7 +31,7 @@ pod 'degpeg-video-call-ios-sdk'
 ```
 3. Install pods using following command
 ```
-pod install   or pod install --repo-update
+pod install or pod install --repo-update
 ```
 ## Usage
 degpeg-video-call-ios-sdk is available through [CocoaPods](https://cocoapods.org). To install

@@ -62,19 +62,26 @@ class DegpegVideoCallViewController: UIViewController, WKNavigationDelegate, WKU
 extension DegpegVideoCallViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController,
                                didReceive message: WKScriptMessage) {
-        DispatchQueue.main.async {
-            if self.isModal {
-                self.dismiss(animated: true)
-            } else {
-                self.navigationController?.popViewController(animated: true)
-            }
-        }
+        dismissView()
     }
 }
 
 extension DegpegVideoCallViewController {
     private func generateURL() {
-        guard let host = model?.host, let appId = model?.appId, let secretKey = model?.secretKey else { return }
+        guard let host = model?.host, !host.isEmpty else {
+            showAlert(message: "Host shouldn't empty")
+            return
+        }
+        
+        guard let appId = model?.appId, !appId.isEmpty else {
+            showAlert(message: "AppId shouldn't empty")
+            return
+        }
+        
+        guard let secretKey = model?.secretKey, !secretKey.isEmpty else {
+            showAlert(message: "SecretKey shouldn't empty")
+            return
+        }
 
         if let callId = model?.callId {
             loadURL(urlString: "https://admin.degpeg.com/onetoone/createcall/?host=\(host)&session=\(callId.toBase64())&publickey=\(secretKey)&appid=\(appId)")
@@ -89,8 +96,36 @@ extension DegpegVideoCallViewController {
             return
         }
         DispatchQueue.main.async {
+            debugPrint("Degpeg VideoURL: ", url)
             self.webView?.load(URLRequest(url: url))
             self.webView?.allowsBackForwardNavigationGestures = true
+        }
+    }
+    
+    private func showAlert(message: String) {
+        // create the alert
+        let alert = UIAlertController(
+            title: "ALERT",
+            message: message,
+            preferredStyle: UIAlertController.Style.alert)
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: { [weak self]_ in
+            guard let self = self else { return }
+            self.dismissView()
+        }))
+
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func dismissView() {
+        DispatchQueue.main.async {
+            if self.isModal {
+                self.dismiss(animated: true)
+            } else {
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
 }
