@@ -9,15 +9,24 @@ import Foundation
 
 public class DegpegViewManager {
 
+    /// Method to initiate DegpegVideoCallViewController
+    /// - Parameters:
+    ///   - host: Denotes Host ID
+    ///   - appId: Denotes AppID
+    ///   - secretKey: Denotes app  secretKey
+    ///   - callId: Denotes call ID
+    /// - Returns: UIViewController
     public static func getVideoCallViewController(
         host: String,
         appId: String,
-        secretKey: String) -> UIViewController {
+        secretKey: String,
+        callId: String? = nil) -> UIViewController {
 
         let vc = DegpegVideoCallViewController()
         vc.model = DegpegVideoCallModel(
             host: host,
             appId: appId,
+            callId: callId,
             secretKey: secretKey)
         return vc
     }

@@ -41,4 +41,5 @@ TODO: Add long description of the pod here.
   # s.frameworks = 'UIKit', 'MapKit'
 #   s.dependency 'AFNetworking', '~> 2.3'
    s.dependency 'MBProgressHUD', '~> 1.2'
+   s.dependency 'Socket.IO-Client-Swift', '~> 16.0'
 end

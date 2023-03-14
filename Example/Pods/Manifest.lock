@@ -1,7 +1,11 @@
 PODS:
   - degpeg-video-call-ios-sdk (1.0):
     - MBProgressHUD (~> 1.2)
+    - Socket.IO-Client-Swift (~> 16.0)
   - MBProgressHUD (1.2.0)
+  - Socket.IO-Client-Swift (16.0.1):
+    - Starscream (~> 4.0)
+  - Starscream (4.0.4)
 
 DEPENDENCIES:
   - degpeg-video-call-ios-sdk (from `../`)
@@ -9,14 +13,18 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - MBProgressHUD
+    - Socket.IO-Client-Swift
+    - Starscream
 
 EXTERNAL SOURCES:
   degpeg-video-call-ios-sdk:
     :path: "../"
 
 SPEC CHECKSUMS:
-  degpeg-video-call-ios-sdk: 068ce77c872befcce6ad907aa7d9ec7e06d730b5
+  degpeg-video-call-ios-sdk: 9d4766cb6a7a110195098fc1a071310bb463728e
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  Socket.IO-Client-Swift: c116d6dc9fd6be9c259bacfe143f8725bce7d79e
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
 
 PODFILE CHECKSUM: 88803f8beb688ce34d59400b13be409305cf7ac9
 

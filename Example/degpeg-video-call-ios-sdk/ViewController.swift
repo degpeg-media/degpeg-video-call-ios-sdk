@@ -13,12 +13,30 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        DegpegSocketIOManager.shared.connect(with: self, delegate: self)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func actionOnCreateCall(_ sender: Any) {
+        let vc = DegpegViewManager.getVideoCallViewController(
+            host: "replace host",
+            appId: "replace appID",
+            secretKey: "replace secretKey")
+        self.present(vc, animated: true)
     }
-
 }
 
+extension ViewController: DegpegSocketDelegate {
+    func receivedNewCallRequest(with model: degpeg_video_call_ios_sdk.ReceivedVideoCall) {
+        print("Received new call request....")
+    }
+}
+
+extension ViewController: DegpegUserDetailsProtocol {
+    func getDegpegUserRole() -> degpeg_video_call_ios_sdk.DegpegUserRole {
+        .contentProvider
+    }
+
+    func getDegpegUserId() -> String {
+        "user ID"
+    }
+}

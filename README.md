@@ -40,6 +40,39 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'degpeg-video-call-ios-sdk'
 ```
+
+## Integration of degpeg-video-call-Socket in Your project
+
+1. Extend DegpegUserDetailsProtocol to your class
+```
+extension ClassName: DegpegUserDetailsProtocol {
+    func getDegpegUserRole() -> degpeg_video_call_ios_sdk.DegpegUserRole {
+        "Replace User role"
+    }
+
+    func getDegpegUserId() -> String {
+        "Replace user ID"
+    }
+}
+
+```
+
+2. Extend DegpegSocketDelegate to your class.
+```
+extension ClassName: DegpegSocketDelegate {
+    func receivedNewCallRequest(with model: degpeg_video_call_ios_sdk.ReceivedVideoCall) {
+        /// redirect to join a video call screen
+    }
+}
+
+```
+
+3. Connect SocketIO
+```
+DegpegSocketIOManager.shared.connect(with userDetails: DegpegUserDetailsProtocol, delegate: DegpegSocketDelegate)
+
+```
+
 ## Integration of degpeg-video-call-ios-sdk in Your project
 
 1. Add Camera & microphone usage in info.plist
@@ -51,16 +84,34 @@ import degpeg_video_call_ios_sdk
 3. Required host, appID, secretKey to initiate the view.
 
 4. Use DegpegViewManager.getVideoCallView to get the videocall view controller object.
-Check below code snippet 
+Check below code snippet for create/Schedule a video call
 ```
         // 1. app id
         // 2. content publisher Id / content prover id
         // 3. app secret
         // 
         // let vc = DegpegViewManager.getVideoCallViewController(
-                host: "NjMyODZmNzI2NDA2MGM2OWM4OWNmNzdl",
-                appId: "TOeEeWktZ2xaruLg",
-                secretKey: "degpegAditya Degpeg_NABKUyKE")
+                host: "replace host",
+                appId: "replace appID",
+                secretKey: "replace secretKey")
+        for present 
+            self.present(vc, animated: true)
+        for push
+            self.navigationController?.pushViewController(vc, animated: true)
+        
+```
+
+Check below code snippet for join a video call
+```
+        // 1. app id
+        // 2. content publisher Id / content prover id
+        // 3. app secret
+        // 
+        // let vc = DegpegViewManager.getVideoCallViewController(
+                host: "replace host",
+                appId: "replace appID",
+                secretKey: "replace secretKey",
+                callId: "replace CallId")
         for present 
             self.present(vc, animated: true)
         for push

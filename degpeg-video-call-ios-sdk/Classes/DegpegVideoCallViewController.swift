@@ -9,13 +9,7 @@ import UIKit
 import WebKit
 import MBProgressHUD
 
-struct DegpegVideoCallModel {
-    var host: String?
-    var appId: String?
-    var callId: String?
-    var secretKey: String?
-}
-
+/// DegpegVideoCallViewController
 class DegpegVideoCallViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     var webView: WKWebView?
     var model: DegpegVideoCallModel?
@@ -84,9 +78,9 @@ extension DegpegVideoCallViewController {
         }
 
         if let callId = model?.callId {
-            loadURL(urlString: "https://admin.degpeg.com/onetoone/createcall/?host=\(host)&session=\(callId.toBase64())&publickey=\(secretKey)&appid=\(appId)")
+            loadURL(urlString: "\(ServiceURL.degpegVideoCallURL)\(host)&session=\(callId.toBase64())&publickey=\(secretKey)&appid=\(appId)")
         } else {
-            loadURL(urlString: "https://admin.degpeg.com/onetoone/createcall/?host=\(host)&publickey=\(secretKey)&appid=\(appId)")
+            loadURL(urlString: "\(ServiceURL.degpegVideoCallURL)\(host)&publickey=\(secretKey)&appid=\(appId)")
         }
     }
 
