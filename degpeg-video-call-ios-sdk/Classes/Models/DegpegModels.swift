@@ -17,9 +17,9 @@ struct DegpegVideoCallModel {
 
 /// ReceivedVideoCall
 public struct ReceivedVideoCall: Codable {
-    var videoCallId: String
-    var contentProviderId: String
-    var userId: String?
+    public var videoCallId: String
+    public var contentProviderId: String
+    public var userId: String?
 }
 
 /// DegpegUserRole
